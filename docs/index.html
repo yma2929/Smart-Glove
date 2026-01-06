@@ -4,9 +4,211 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Glove</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        :root {
+    --primary: #005FB8;
+    --patient-grad: linear-gradient(135deg, #00bfa6, #00796b);
+    --doctor-grad: linear-gradient(135deg, #005FB8, #003d7a);
+    --bg: #F0F4F8;
+    --white: #ffffff;
+    --text-main: #1e2a3b;
+    --text-muted: #5f7287;
+}
+
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header - Centered 75% logic */
+.header {
+    background: #fff;
+    padding: 20px 12.5%; /* Aligns with the 75% width container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.brand a {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.header nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.header nav a:hover { color: var(--primary); }
+
+/* Main Container */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Role Selector Card */
+.card {
+    background: var(--white);
+    width: 100%;
+    max-width: 550px; /* Focused width */
+    padding: 50px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 95, 184, 0.08);
+}
+
+.logo-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--primary);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    color: white;
+    font-size: 35px;
+}
+
+.card h1 {
+    font-size: 38px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* Role Buttons */
+.role-btn {
+    display: flex;
+    align-items: center;
+    padding: 22px;
+    border-radius: 18px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    color: white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.role-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.role-btn .icon {
+    background: rgba(255,255,255,0.15);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.role-btn .text {
+    text-align: left;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.role-btn .text h3 {
+    font-size: 19px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.role-btn .text span {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.role-btn .arrow {
+    font-size: 28px;
+    opacity: 0.7;
+}
+
+.patient { background: var(--patient-grad); }
+.doctor { background: var(--doctor-grad); }
+
+.hint {
+    margin-top: 15px;
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* Trust Badges */
+.badges {
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.badges span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badges i { color: var(--primary); font-size: 18px; }
+
+/* Footer */
+.footer {
+    background-color: #1e2a3b;
+    padding: 30px 12.5%;
+    color: #cfd8e3;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left p { font-size: 14px; margin-bottom: 4px; }
+.footer-left .disclaimer { font-size: 12px; opacity: 0.7; }
+
+.footer-links { display: flex; gap: 15px; font-size: 14px; }
+.footer-links a { color: #9bb4d3; text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: #fff; }
+    </style>
 </head>
 <body>
 
