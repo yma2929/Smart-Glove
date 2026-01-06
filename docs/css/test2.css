@@ -1,0 +1,287 @@
+:root {
+    --primary: #005FB8;
+    --success: #28A745;
+    --warning: #FFC107;
+    --danger: #DC3545;
+    --bg: #F0F4F8;
+    --white: #ffffff;
+    --text: #333;
+}
+
+/* Base Layout & Typography */
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    font-size: 18px; /* High-legibility base size */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Content Centering (75% Width) */
+.main-container {
+    width: 75%;
+    margin: 40px auto;
+    flex: 1; /* Pushes footer to the bottom */
+}
+
+/* Header & Progress Bar */
+.test-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+.logo-area { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    color: var(--primary); 
+    font-weight: bold; 
+    font-size: 26px; 
+}
+
+.exit-btn { 
+    background: #fff; 
+    border: 1px solid #ddd; 
+    padding: 10px 22px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    font-size: 16px; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exit-btn:hover { 
+    background: #fdfdfd; 
+    color: var(--danger); 
+    border-color: var(--danger);
+}
+
+.progress-meta { 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 18px; 
+    margin-bottom: 10px; 
+}
+
+.progress-bar { 
+    background: #dbe2e8; 
+    height: 12px; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-bottom: 30px;
+}
+
+.progress-fill { 
+    height: 100%; 
+    width: 0%; 
+    background: var(--primary); 
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+/* Task Card Main UI */
+.task-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 50px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.task-header-ui { margin-bottom: 25px; }
+
+.task-icon-circle {
+    width: 80px; 
+    height: 80px; 
+    background: #eef4ff; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin: 0 auto 15px; 
+    font-size: 40px; 
+    color: var(--primary);
+}
+
+.task-card h1 { 
+    font-size: 36px; 
+    margin: 10px 0; 
+    font-weight: 700;
+}
+
+/* Info Boxes (Instructions, Visual, Audio) */
+.info-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    text-align: left; 
+    margin: 30px 0; 
+}
+
+.info-box { 
+    padding: 22px; 
+    border-radius: 15px; 
+    font-size: 17px; 
+    line-height: 1.6; 
+}
+
+.blue { background: #E3F2FD; color: #0D47A1; }
+.purple { background: #F3E5F5; color: #4A148C; }
+
+/* Audio Box Redesign (Light Yellow) */
+.yellow.audio-box { 
+    background: #FFFDE7; 
+    color: #856404; 
+    border: 1px solid #FFF9C4; 
+    text-align: left;
+    margin-bottom: 35px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.yellow.audio-box:hover { 
+    background: #FFF9C4; 
+    transform: translateY(-2px);
+}
+
+/* Timer Circle */
+.timer-container { margin: 35px 0; }
+
+.timer-circle { 
+    width: 140px; 
+    height: 140px; 
+    border: 8px solid #f0f0f0; 
+    border-radius: 50%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto; 
+}
+
+#timer { 
+    font-size: 56px; 
+    font-weight: 800; 
+    color: var(--primary); 
+    line-height: 1;
+}
+
+/* Status Dashboard & Icons */
+.all-tasks h3 { 
+    font-size: 24px; 
+    margin-bottom: 25px; 
+    font-weight: 600;
+}
+
+.task-status-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; 
+}
+
+.status-item {
+    padding: 25px 15px; 
+    border-radius: 15px; 
+    border: 2px solid #eee; 
+    background: #fff;
+    text-align: center; 
+    font-size: 15px; 
+    font-weight: bold; 
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-item i { font-size: 28px; }
+
+/* Dynamic Status States */
+.unstarted { background: #fff; color: #999; border-color: #eee; }
+
+.in-progress { 
+    background: #E3F2FD !important; 
+    border-color: var(--primary) !important; 
+    color: var(--primary); 
+    box-shadow: 0 4px 15px rgba(0, 95, 184, 0.1);
+}
+
+.completed { 
+    background: #E8F5E9 !important; 
+    border-color: var(--success) !important; 
+    color: var(--success); 
+}
+
+.incomplete { 
+    background: #FFFDE7 !important; 
+    border-color: var(--warning) !important; 
+    color: #856404; 
+}
+
+/* Primary Action Buttons */
+.btn { 
+    border: none; 
+    padding: 18px 35px; 
+    border-radius: 14px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    min-width: 200px; 
+    font-size: 19px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+.primary { background: var(--primary); color: white; }
+.primary:hover { background: #004d96; }
+
+.success { background: var(--success); color: white; }
+.warning { background: var(--warning); color: #333; }
+
+.hidden { display: none; }
+
+/* Recording Feedback */
+.recording { color: var(--danger); font-size: 16px; margin-top: 15px; font-weight: 500; }
+
+.pulse-dot {
+    height: 10px; width: 10px; background-color: var(--danger);
+    border-radius: 50%; display: inline-block; animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+/* Results Chart */
+.chart-wrapper { height: 400px; margin-top: 30px; }
+
+/* Footer Styling */
+.footer {
+    background-color: #1e2a3b;
+    padding: 40px 0;
+    color: #cfd8e3;
+    width: 100%;
+    margin-top: auto; /* Ensures footer stays at bottom */
+}
+
+.footer-content {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-left p { margin: 0; font-size: 14px; line-height: 1.8; }
+.footer-links { display: flex; gap: 20px; align-items: center; }
+.footer-links a { color: #9bb4d3; text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-links a:hover { color: #ffffff; }

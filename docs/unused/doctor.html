@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Dashboard | Smart Glove System</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="doctor.css">
+</head>
+<body>
+
+<div class="doctor-container">
+    <header class="stats-header">
+        <div class="stat-card">
+            <div class="stat-icon blue"><i class='bx bx-group'></i></div>
+            <div class="stat-info">
+                <small>Total Patients</small>
+                <h3>24</h3>
+                <span class="trend up">+3 this month</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon green"><i class='bx bx-pulse'></i></div>
+            <div class="stat-info">
+                <small>Active Today</small>
+                <h3>12</h3>
+                <span class="trend">50% completion rate</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon red"><i class='bx bx-error-circle'></i></div>
+            <div class="stat-info">
+                <small>Need Attention</small>
+                <h3 class="text-red">3</h3>
+                <span class="trend red">Review required</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon purple"><i class='bx bx-file'></i></div>
+            <div class="stat-info">
+                <small>Avg. Compliance</small>
+                <h3>87%</h3>
+                <span class="trend up">+5% vs last month</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="patient-sidebar">
+            <div class="sidebar-top">
+                <h3>Patients</h3>
+                <button class="filter-btn"><i class='bx bx-filter'></i> Filter</button>
+            </div>
+            <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="text" id="patientSearch" placeholder="Search patients...">
+            </div>
+            
+            <div class="patient-list">
+                <div class="patient-item active">
+                    <div class="p-header">
+                        <strong>John Smith</strong>
+                        <span class="trend-icon stable">—</span>
+                    </div>
+                    <small>Age 68 • 24 tests</small>
+                    <div class="p-status-row">
+                        <span>Last: Jan 2</span>
+                        <span class="p-badge good"><i class='bx bx-check-circle'></i> Good</span>
+                    </div>
+                    <div class="completion-meta">
+                        <small>Completion</small>
+                        <small>95%</small>
+                    </div>
+                    <div class="mini-progress-bar"><div class="fill" style="width: 95%;"></div></div>
+                </div>
+
+                <div class="patient-item alert">
+                    <div class="p-header">
+                        <strong>Robert Williams</strong>
+                        <span class="trend-icon down"><i class='bx bx-trending-down'></i></span>
+                    </div>
+                    <small>Age 65 • 18 tests</small>
+                    <div class="p-status-row">
+                        <span>Last: Dec 28</span>
+                        <span class="p-badge danger"><i class='bx bx-error-circle'></i> Needs Attention</span>
+                    </div>
+                    <div class="mini-progress-bar"><div class="fill danger" style="width: 78%;"></div></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="analytics-area">
+            <div class="patient-profile-card">
+                <div class="profile-header">
+                    <div class="profile-meta">
+                        <h2>John Smith</h2>
+                        <small>Age: 68 • Patient ID: #0001 • Total Tests: 24</small>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-secondary"><i class='bx bx-show'></i> View Details</button>
+                        <button class="btn-export" onclick="downloadReport('John_Smith')">
+                            <i class='bx bx-download'></i> Export Report
+                        </button>
+                    </div>
+                </div>
+                <div class="quick-stats">
+                    <div class="q-box blue">Trend Status: <strong>Stable</strong></div>
+                    <div class="q-box green">Last Assessment: <strong>Jan 2, 2026</strong></div>
+                    <div class="q-box purple">Completion Rate: <strong>95%</strong></div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Overall Performance Trend</h3>
+                    <small><i class='bx bx-calendar'></i> Last 5 weeks</small>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3>Task-Specific Performance</h3>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="notes-section">
+                <h3>Clinical Notes & Observations</h3>
+                <div class="note-item latest">
+                    <div class="note-meta">Jan 2, 2026 - Dr. Anderson <span class="badge-recent">Recent</span></div>
+                    <p>Patient showing consistent performance across all motor tasks. Finger tapping shows slight improvement over the past two weeks. Continue current treatment plan.</p>
+                </div>
+                <div class="note-item">
+                    <div class="note-meta">Dec 19, 2025 - Dr. Anderson</div>
+                    <p>Initial assessment completed. Patient demonstrates good compliance with home testing protocol.</p>
+                </div>
+                <button class="add-note-btn">+ Add New Note</button>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="doctor.js"></script>
+</body>
+</html>

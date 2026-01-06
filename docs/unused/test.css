@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f6f9fc;
+    margin: 0;
+    padding: 20px;
+}
+
+.test-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-bar {
+    background: #e0e6ed;
+    height: 8px;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 25%;
+    background: #00bfa6;
+    border-radius: 5px;
+}
+
+.task-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.info-box {
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.blue { background: #eef4ff; }
+.purple { background: #f5f0ff; }
+
+.timer-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#timer {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.recording {
+    color: #d9534f;
+}
+
+.hidden {
+    display: none;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.primary {
+    background: #00bfa6;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    flex: 1;
+    font-size: 16px;
+}
+
+.secondary {
+    background: #ffc107;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.task-btn {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.task-btn.green { background: #d4edda; }
+.task-btn.yellow { background: #fff3cd; }
+.task-btn.red { background: #f8d7da; }

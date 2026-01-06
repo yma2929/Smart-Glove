@@ -1,0 +1,211 @@
+:root {
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --primary: #005FB8;
+    --success: #28A745;
+    --danger: #DC3545;
+    --warning: #FFC107;
+    --text-dark: #1e293b;
+    --border: #e2e8f0;
+    --sidebar-width: 350px;
+}
+
+body { 
+    font-family: 'Inter', -apple-system, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    color: var(--text-dark); 
+    line-height: 1.5;
+}
+
+.doctor-container { 
+    padding: 24px; 
+    max-width: 1600px; 
+    margin: auto; 
+}
+
+/* Stats Header */
+.stats-header { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 24px; 
+}
+
+.stat-card { 
+    background: var(--white); 
+    padding: 20px; 
+    border-radius: 12px; 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+}
+
+.stat-icon { 
+    width: 48px; 
+    height: 48px; 
+    border-radius: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 22px; 
+}
+
+.stat-icon.blue { background: #eff6ff; color: var(--primary); }
+.stat-icon.green { background: #f0fdf4; color: var(--success); }
+.stat-icon.red { background: #fef2f2; color: var(--danger); }
+.stat-icon.purple { background: #faf5ff; color: #7e22ce; }
+
+/* Main Layout Grid */
+.main-layout { 
+    display: grid; 
+    grid-template-columns: var(--sidebar-width) 1fr; 
+    gap: 24px; 
+    align-items: start;
+}
+
+/* Sidebar Styling */
+.patient-sidebar { 
+    background: var(--white); 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    position: sticky;
+    top: 24px;
+}
+
+.search-box {
+    position: relative;
+    margin: 16px 0;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 12px 10px 35px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.search-box i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.patient-item { 
+    padding: 14px; 
+    border: 1px solid var(--border); 
+    border-radius: 10px; 
+    margin-bottom: 12px; 
+    cursor: pointer; 
+    transition: 0.2s; 
+}
+
+.patient-item.active { 
+    border-color: #00bfa6; 
+    background: #f0fffb; 
+}
+
+.p-header { display: flex; justify-content: space-between; align-items: center; }
+
+.p-badge { 
+    padding: 2px 8px; 
+    border-radius: 6px; 
+    font-size: 11px; 
+    font-weight: 600; 
+    display: flex; 
+    align-items: center; 
+    gap: 4px; 
+}
+
+.p-badge.good { background: #dcfce7; color: #166534; }
+.p-badge.danger { background: #fee2e2; color: #991b1b; }
+
+.mini-progress-bar { 
+    height: 6px; 
+    background: #e2e8f0; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-top: 8px; 
+}
+
+.mini-progress-bar .fill { height: 100%; background: #00bfa6; transition: 0.3s; }
+.mini-progress-bar .fill.danger { background: var(--danger); }
+
+/* Main Analytics Card Styling */
+.patient-profile-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.quick-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.q-box {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.q-box.blue { background: #eff6ff; color: var(--primary); }
+.q-box.green { background: #f0fdf4; color: var(--success); }
+.q-box.purple { background: #faf5ff; color: #7e22ce; }
+
+.chart-card { 
+    background: var(--white); 
+    padding: 24px; 
+    border-radius: 12px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    margin-bottom: 24px; 
+}
+
+/* Notes Styling */
+.note-item { 
+    background: #f8fafc; 
+    padding: 16px; 
+    border-radius: 10px; 
+    margin-bottom: 12px; 
+    border-left: 4px solid var(--border); 
+}
+
+.note-item.latest { 
+    background: #f0f9ff; 
+    border-left-color: var(--primary); 
+}
+
+.badge-recent { 
+    background: #dbeafe; 
+    color: var(--primary); 
+    font-size: 10px; 
+    padding: 2px 6px; 
+    border-radius: 4px; 
+    font-weight: bold;
+}
+
+.add-note-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 2px dashed var(--border);
+    border-radius: 10px;
+    color: #64748b;
+    cursor: pointer;
+    font-weight: 500;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SlowGlove Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+<header class="test-header">
+    <h2>SlowGlove Test</h2>
+    <button class="exit-btn"><i class='bx bx-home'></i> Exit</button>
+</header>
+
+<section class="progress-section">
+    <span>Progress</span>
+    <span id="taskCounter">Task 1 of 4</span>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</section>
+
+<main class="task-card">
+
+    <div class="task-icon">
+        <i class='bx bx-hand'></i>
+    </div>
+
+    <h1 id="taskTitle">Finger Tapping</h1>
+
+    <div class="info-box blue">
+        <strong>Instructions:</strong>
+        <p id="taskInstructions">
+            Tap your index finger and thumb together as quickly as possible
+        </p>
+    </div>
+
+    <div class="info-box purple">
+        <strong>Visual Guide:</strong>
+        <p>Watch the animation and follow along</p>
+    </div>
+
+    <button class="audio-btn" id="audioBtn">
+        <i class='bx bx-volume-full'></i>
+        Tap here to hear the instructions read aloud
+    </button>
+
+    <!-- TIMER -->
+    <div class="timer-section">
+        <span id="timer">00:30</span>
+        <p id="recordingMsg" class="recording hidden">
+            🔴 Recording in progress...<br>
+            Keep going! You're doing great.
+        </p>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+        <button id="startBtn" class="primary">
+            <i class='bx bx-play'></i> Begin Task
+        </button>
+
+        <button id="pauseBtn" class="secondary hidden">
+            <i class='bx bx-pause'></i> Pause
+        </button>
+
+        <button id="nextBtn" class="primary hidden">
+            Next Task →
+        </button>
+    </div>
+
+    <button class="skip-btn">Skip this task</button>
+</main>
+
+<!-- TASK LIST -->
+<section class="all-tasks">
+    <h3>All Tasks</h3>
+    <div class="task-list">
+        <button class="task-btn active" data-status="pending">Finger Tapping</button>
+        <button class="task-btn" data-status="pending">Hand Open / Close</button>
+        <button class="task-btn" data-status="pending">Hand Flip</button>
+        <button class="task-btn" data-status="pending">Finger to Nose</button>
+    </div>
+</section>
+
+<audio id="instructionAudio" src="audio/finger-tapping.mp3"></audio>
+
+<script src="test.js"></script>
+</body>
+</html>

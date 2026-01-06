@@ -1,0 +1,264 @@
+:root {
+    --primary: #005FB8;
+    --success: #28A745;
+    --warning: #FFC107;
+    --danger: #DC3545;
+    --bg: #F0F4F8;
+    --white: #ffffff;
+    --text-main: #1e2a3b;
+    --text-muted: #5f7287;
+}
+
+/* Base Layout */
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Centered 75% Container */
+.dashboard {
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 1.2fr;
+    gap: 30px;
+    padding: 40px 0;
+    flex: 1;
+}
+
+/* Header Styling */
+.header {
+    background: #fff;
+    padding: 20px 12.5%; /* Matches the 75% width alignment */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.brand a {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.header nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.header nav a:hover {
+    color: var(--primary);
+}
+
+/* Card Components */
+.card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 95, 184, 0.05);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Start Test Section */
+.start-test {
+    border: 2px solid #e0f2fe;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    text-align: center;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 25px;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 16px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.start-btn:hover {
+    background: #004d96;
+    transform: translateY(-3px);
+}
+
+.start-btn a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.info {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* Task List Styling */
+.tasks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.task {
+    padding: 20px;
+    border-radius: 14px;
+    background: #fcfdfe;
+    border: 1px solid #edf2f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.task:hover {
+    border-color: var(--primary);
+    background: #f0f7ff;
+    transform: translateX(5px);
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.task-info i {
+    font-size: 26px;
+    color: var(--primary);
+}
+
+/* Status Indicators */
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.online { 
+    background: var(--success); 
+    box-shadow: 0 0 8px var(--success); 
+}
+
+/* Support Buttons (Right Sidebar) */
+.support-btn {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 14px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: filter 0.2s;
+}
+
+.support-btn.blue { background: #e8f1ff; color: #005FB8; }
+.support-btn.purple { background: #f2eaff; color: #6b21a8; }
+.support-btn.gray { background: #f1f3f6; color: #4b5563; }
+
+.support-btn:hover {
+    filter: brightness(0.95);
+}
+
+/* Chart Container */
+#progressChart {
+    margin-top: 10px;
+}
+
+.card-header .status {
+    background: #e8f5e9;
+    color: var(--success);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #1e2a3b;
+    padding: 40px 0;
+    color: #cfd8e3;
+    margin-top: 40px;
+}
+
+.footer-content {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: #9bb4d3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+/* Hidden Utility */
+.hidden { display: none; }

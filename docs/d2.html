@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Dashboard | Smart Glove</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="doctor1.css">
+</head>
+<body>
+
+<div class="doctor-container">
+    
+
+     <header class="page-header header ">
+        <div class="brand">
+            <h1><a href="./d2.html">Clinical Dashboard</a></h1>
+        
+        </div>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    
+
+    <section class="stats-overview">
+        <div class="stat-card">
+            <div class="stat-top"><small>Total Patients</small><i class='bx bx-group icon-blue'></i></div>
+            <h3>24</h3><span class="trend positive">+3 this month</span>
+        </div>
+        <div class="stat-card">
+            <div class="stat-top"><small>Active Today</small><i class='bx bx-pulse icon-teal'></i></div>
+            <h3>12</h3><span class="trend neutral">50% completion rate</span>
+        </div>
+        <div class="stat-card">
+            <div class="stat-top"><small>Need Attention</small><i class='bx bx-error-circle icon-red'></i></div>
+            <h3 class="text-red">3</h3><span class="trend negative">Review required</span>
+        </div>
+        <div class="stat-card">
+            <div class="stat-top"><small>Avg. Compliance</small><i class='bx bx-file icon-purple'></i></div>
+            <h3>87%</h3><span class="trend positive">+5% vs last month</span>
+        </div>
+    </section>
+
+    <div class="main-layout">
+        <aside class="patient-sidebar">
+            <div class="sidebar-top">
+                <h3>Patients</h3>
+            </div>
+            <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="text" id="patientSearch" placeholder="Search patients...">
+            </div>
+            <div class="patient-list" id="sidebarList"></div>
+        </aside>
+
+        <main class="analytics-area">
+            <div class="patient-profile-card">
+                <div class="profile-header">
+                    <div class="profile-meta">
+                        <h2 id="activeName">John Smith</h2>
+                        <small id="activeMeta">Age: 68 • Patient ID: #0001 • Total Tests: 24</small>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-view" id="viewDetailsBtn"><i class='bx bx-show'></i> View Details</button>
+                    </div>
+                </div>
+                
+                <div class="quick-stats-row">
+                    <div class="q-box blue-grad">
+                        <small>Trend Status</small>
+                        <p><span id="trendIcon">—</span> <span id="trendTxt">Stable</span></p>
+                    </div>
+                    <div class="q-box green-grad">
+                        <small>Last Assessment</small>
+                        <p id="lastTxt">Jan 2, 2026</p>
+                    </div>
+                    <div class="q-box purple-grad">
+                        <small>Completion Rate</small>
+                        <p id="rateTxt">95%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+    <div class="chart-card minimized">
+        <h3>Overall Performance Trend</h3>
+        <div class="canvas-wrapper">
+            <canvas id="mainLineChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="chart-card minimized">
+        <h3>Task-Specific Performance</h3>
+        <div class="canvas-wrapper">
+            <canvas id="mainBarChart"></canvas>
+        </div>
+    </div>
+</div>
+
+            <div class="notes-section">
+                <h3>Clinical Notes & Observations</h3>
+                <div id="notesStack" class="notes-stack"></div>
+                <button class="add-note-btn" id="addNoteTrigger">+ Add New Note</button>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <div id="detailsModal" class="modal-overlay">
+    <div class="modal-content">
+        <header class="modal-header">
+            <div class="header-info">
+                <h2 id="modalName">John Smith</h2>
+                <p id="modalMeta">Patient ID: #0001  •  Age: 68  •  Total Tests: 24  •  Completion Rate: 95%</p>
+            </div>
+            <div class="header-actions">
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+        </header>
+
+        <nav class="modal-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+        </nav>
+
+        <div class="tab-viewport">
+            <section class="tab-pane active" id="overview">
+                <div class="metrics-grid">
+                    <div class="metric-card teal-wash">
+                        <div class="m-head">Latest Score <i class='bx bx-trending-up'></i></div>
+                        <div class="m-val">78</div>
+                        <div class="m-sub">+2 from previous</div>
+                    </div>
+                    <div class="metric-card blue-wash">
+                        <div class="m-head">Tests This Month <i class='bx bx-pulse'></i></div>
+                        <div class="m-val">12</div>
+                        <div class="m-sub">3 per week average</div>
+                    </div>
+                    <div class="metric-card purple-wash">
+                        <div class="m-head">Avg. Duration <i class='bx bx-time'></i></div>
+                        <div class="m-val">8:42</div>
+                        <div class="m-sub">minutes</div>
+                    </div>
+                    <div class="metric-card green-wash">
+                        <div class="m-head">Best Task <i class='bx bx-target-lock'></i></div>
+                        <div class="m-val">Finger Tap</div>
+                        <div class="m-sub">82% average</div>
+                    </div>
+                </div>
+
+                <div class="motor-profile-split">
+                    <div class="viz-card">
+                        <h3>Motor Function Profile</h3>
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div class="viz-card">
+                        <h3>Performance Breakdown</h3>
+                        <div id="breakdownBars" class="breakdown-list"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Left side -->
+    <div class="footer-left">
+      <p class="copyright">© 2026 Smart Glove. All rights reserved.</p>
+      <p class="disclaimer">For clinical support and research purposes only.</p>
+    </div>
+
+    <!-- Right side -->
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <span>|</span>
+      <a href="#">Terms of Use</a>
+      <span>|</span>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="d2.js"></script>
+ 
+
+</body>
+</html>

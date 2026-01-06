@@ -1,0 +1,644 @@
+:root {
+    --primary: #005FB8; --teal: #14b8a6; --bg: #f8fafc;
+    --success: #28A745; --danger: #DC2626; --warning: #D97706;
+    --text-dark: #1e293b; --text-muted: #475569; --border: #e2e8f0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom right, #f8fafc, #eff6ff); /* slate-50 to blue-50 */
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+.doctor-container {
+    padding: 24px; /* 6 unit padding */
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Header Section */
+.page-header h1 { font-size: 36px; color: var(--text-dark); margin: 0; }
+.page-header p { font-size: 20px; color: var(--text-muted); margin-top: 4px; }
+
+/* Stats Grid */
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px; /* 2xl rounded */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.stat-card h3 { font-size: 30px; margin: 8px 0; }
+.trend { font-size: 14px; font-weight: 500; }
+.trend.positive { color: var(--success); }
+.trend.negative { color: var(--danger); }
+
+/* Icons */
+.icon-blue { color: #2563eb; }
+.icon-teal { color: #14b8a6; }
+.icon-red { color: #dc2626; }
+.icon-purple { color: #9333ea; }
+
+/* Main Grid Layout */
+.main-layout { display: grid; grid-template-columns: 350px 1fr; gap: 24px; }
+
+/* Sidebar */
+.patient-sidebar { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
+.search-box { position: relative; margin: 16px 0; }
+.search-box i { position: absolute; left: 12px; top: 12px; color: var(--text-muted); }
+.search-box input { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid var(--border); border-radius: 8px; box-sizing: border-box; }
+
+.patient-item {
+    background: #f8fafc; /* slate-50 */
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.patient-item.active { background: #f0fdfa; border-color: var(--teal); }
+
+/* Progress Bars */
+.mini-progress-bar { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+.mini-progress-bar .fill { height: 100%; background: var(--teal); }
+.mini-progress-bar .fill.danger { background: var(--danger); }
+
+/* Badges */
+.p-badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.p-badge.good { background: #dcfce7; color: #166534; }
+.p-badge.danger { background: #fee2e2; color: #b91c1c; }
+
+/* Modal Header Gradient */
+.modal-header {
+    background: linear-gradient(135deg, #00897b, #005fb8); /* Teal-600 to Blue-600 */
+    color: white;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* KPI Summary Boxes */
+.blue-grad { background: linear-gradient(to right, #eff6ff, #dbeafe); color: #1e40af; }
+.green-grad { background: linear-gradient(to right, #f0fdf4, #dcfce7); color: #166534; }
+.purple-grad { background: linear-gradient(to right, #faf5ff, #f3e8ff); color: #6b21a8; }
+/* Container Card */
+.patient-profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 25px;
+}
+
+/* Header with Name and Buttons */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.profile-meta h2 {
+    font-size: 32px;
+    margin: 0;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.profile-meta small {
+    color: #64748b;
+    font-size: 16px;
+    margin-top: 8px;
+    display: block;
+}
+
+/* Buttons Styling */
+.profile-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.btn-view {
+    background: #005fb8; /* Professional Blue */
+    color: white;
+}
+
+.btn-view:hover { background: #004a8f; }
+
+.btn-export {
+    background: #475569; /* Slate Gray */
+    color: white;
+}
+
+.btn-export:hover { background: #334155; }
+
+/* The Three Summary Boxes */
+.quick-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.q-box {
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.q-box small {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.q-box p {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Specific Box Colors */
+.blue-grad {
+    background: #eff6ff; /* Soft Blue */
+    color: #1e40af;
+}
+
+.green-grad {
+    background: #f0fdf4; /* Soft Green */
+    color: #166534;
+}
+
+.purple-grad {
+    background: #faf5ff; /* Soft Purple */
+    color: #6b21a8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container for side-by-side charts */
+.charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 24px; /* Professional 6-unit spacing */
+    margin-bottom: 24px;
+}
+
+/* Minimized chart container */
+.chart-card.minimized {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px; /* 2xl rounded corners */
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* shadow-lg */
+}
+
+/* Wrapper to fix height and prevent context errors */
+.canvas-wrapper {
+    height: 300px;
+    position: relative;
+    width: 100%;
+}
+
+.notes-section {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.notes-section h3 {
+    font-size: 24px;
+    color: #1e293b;
+    margin-bottom: 24px;
+}
+
+.note-card {
+    background: #f8fafc; /* slate-50 */
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #e2e8f0;
+    transition: 0.2s ease;
+}
+
+/* Highlight for the most recent note */
+.note-card.recent {
+    background: #eff6ff; /* blue-50 wash */
+    border-color: #bfdbfe; /* blue-200 border */
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #475569;
+}
+
+.recent-badge {
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.note-content {
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Action Button - Dashed Border Style */
+.add-note-btn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    color: #64748b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-note-btn:hover {
+    border-color: #14b8a6; /* brand teal */
+    color: #14b8a6;
+    background: #f0fdfa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal-header {
+    background: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+    color: white;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Metric Cards */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.metric-card {
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+
+.modal-tabs {
+    background: rgba(255, 255, 255, 0.1); /* Subtle contrast against header gradient */
+    display: flex;
+    gap: 8px;
+    padding: 0 40px 20px 40px;
+    margin-top: -20px; /* Pulls tabs closer to header title */
+}
+
+
+
+.teal-wash { background-color: #f0fdfa; color: #0d9488; }
+.blue-wash { background-color: #eff6ff; color: #1e40af; }
+.purple-wash { background-color: #faf5ff; color: #6b21a8; }
+.green-wash { background-color: #f0fdf4; color: #166534; }
+
+
+
+.metric-card .m-head {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.metric-card .m-val { font-size: 28px; font-weight: 700; margin: 5px 0; }
+.metric-card .m-sub { font-size: 12px; opacity: 0.8; margin-top: 4px;}
+
+ .breakdown-list { margin-bottom: 15px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; }
+.bar-track { height: 8px; background: #f1f5f9; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: #14b8a6; border-radius: 10px; }  
+
+/* Ensure the modal covers the entire screen */
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; 
+    z-index: 9999; 
+    backdrop-filter: blur(5px);
+    overflow-y: auto; 
+}
+
+/* The actual white box */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    background: white;
+    margin: 2rem auto;  
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;  
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.tab-btn {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #0d9488; /* Matches teal brand color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- Chart Split Layout --- */
+.motor-profile-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Radar on left, Breakdown on right */
+    gap: 40px;
+    padding: 0 40px 40px 40px;
+}
+
+.viz-card h3 {
+    font-size: 18px;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+
+/* Base Button Styling */
+.btn-view {
+    background: #005fb8; /* Professional Blue */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+.btn-view:hover {
+    background: #004a8f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: Icon Styling */
+.btn-view i {
+    font-size: 16px;
+}
+
+
+
+
+
+
+/* --- 1. Modern "X" Close Button --- */
+.close-modal {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent circle */
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* --- 2. Enhanced Overview Text & Icons --- */
+.metric-card .m-head {
+    font-size: 16px; /* Increased size for headers */
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.metric-card .m-head i {
+    font-size: 22px; /* Scaled icons for clinical clarity */
+}
+
+.metric-card .m-sub {
+    font-size: 14px; /* Larger supporting text */
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* --- 3. Structured Performance Breakdown --- */
+.breakdown-item {
+    margin-bottom: 24px;
+}
+
+.b-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px; /* Increased legibility */
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.b-label span:last-child {
+    color: #64748b; /* Muted color for percentage values */
+    font-weight: 500;
+}
+
+/* --- 4. Deep-Dive Visual Shadows --- */
+.motor-profile-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 32px 40px;
+    background: #fcfdfe; /* Subtle contrast background */
+}
+
+.viz-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid #f1f5f9;
+    /* Added Depth with Layered Shadow */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 
+                0 8px 10px -6px rgba(0, 0, 0, 0.02);
+}
+
+
+
+/* Refined Header Section */
+.header {
+    background: #ffffff;
+    padding: 16px 5%; /* Balanced padding for wide screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand a {
+    text-decoration: none;
+    color: var(--primary); /* Uses the #005FB8 Professional Blue */
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Updated Navigation Styling */
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header nav a {
+    text-decoration: none;
+    color: var(--text-muted); /* Slate Gray #475569 */
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header nav a:hover {
+    color: var(--primary);
+    background: #eff6ff; /* Soft blue wash on hover */
+}
+
+/* Active state for current page */
+.header nav a.active {
+    color: var(--primary);
+    background: #eff6ff;
+}
+
+/* Footer */
+.footer {
+    background-color: #1e2a3b;
+    padding: 30px 12.5%;
+    color: #cfd8e3;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left p { font-size: 14px; margin-bottom: 4px; }
+.footer-left .disclaimer { font-size: 12px; opacity: 0.7; }
+
+.footer-links { display: flex; gap: 15px; font-size: 14px; }
+.footer-links a { color: #9bb4d3; text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: #fff; }
