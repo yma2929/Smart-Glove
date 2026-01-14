@@ -574,17 +574,11 @@ const tasks = [
         instructions: "Place your hand on your lap. Rapidly flip your hand over, alternating between palm-up and palm-down. Keep the movement consistent.", 
         icon: "bx-refresh",
         gif: "assets/gifs/hand-flip.gif"
-    },
-    { 
-        title: "Finger to Nose", 
-        instructions: "Start with your arm fully extended. Touch the tip of your nose with your index finger, then return your arm to the fully extended position.", 
-        icon: "bx-target-lock",
-        gif: "assets/gifs/finger-to-nose.gif"
     }
 ];
 
 let currentTaskIdx = 0;
-let timeLeft = 30;
+let timeLeft = 10;
 let timerInterval = null;
 let isRunning = false;
 
@@ -668,7 +662,7 @@ function loadTask(index) {
     taskGif.src = task.gif;
 
     // Reset UI
-    timeLeft = 30;
+    timeLeft = 10;
     timerEl.textContent = timeLeft;
     startBtn.classList.remove('hidden');
     pauseBtn.classList.add('hidden');

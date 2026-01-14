@@ -1,277 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slow Glove</title>
-    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
+    <meta charset="UTF-8">
+    <title>Patient Dashboard | Slow Glove</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <style>
-        :root {
-    --primary: #005FB8;
-    --patient-grad: linear-gradient(135deg, #00bfa6, #00796b);
-    --doctor-grad: linear-gradient(135deg, #005FB8, #003d7a);
-    --bg: #F0F4F8;
-    --white: #ffffff;
-    --text-main: #1e2a3b;
-    --text-muted: #5f7287;
-}
 
-* {
-    margin: 0; padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-}
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-body {
-    min-height: 100vh;
-    background: var(--bg);
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header - Centered 75% logic */
-.header {
-    background: #fff;
-    padding: 20px 12.5%; /* Aligns with the 75% width container */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-}
-
-.brand a {
-    text-decoration: none;
-    color: var(--primary);
-    font-size: 24px;
-}
-
-.header nav a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.header nav a:hover { color: var(--primary); }
-
-/* Main Container */
-.container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-/* Role Selector Card */
-.card {
-    background: var(--white);
-    width: 100%;
-    max-width: 550px; /* Focused width */
-    padding: 50px;
-    border-radius: 24px;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 95, 184, 0.08);
-}
-
-.logo-icon {
-    width: 70px;
-    height: 70px;
-    background: var(--primary);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 25px;
-    color: white;
-    font-size: 35px;
-}
-
-.card h1 {
-    font-size: 38px;
-    color: var(--text-main);
-    margin-bottom: 8px;
-}
-
-.subtitle {
-    font-size: 18px;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-}
-
-/* Role Buttons */
-.role-btn {
-    display: flex;
-    align-items: center;
-    padding: 22px;
-    border-radius: 18px;
-    text-decoration: none;
-    margin-bottom: 20px;
-    color: white;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.role-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-}
-
-.role-btn .icon {
-    background: rgba(255,255,255,0.15);
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.role-btn .text {
-    text-align: left;
-    flex: 1;
-    margin-left: 20px;
-}
-
-.role-btn .text h3 {
-    font-size: 19px;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
-
-.role-btn .text span {
-    font-size: 14px;
-    opacity: 0.85;
-}
-
-.role-btn .arrow {
-    font-size: 28px;
-    opacity: 0.7;
-}
-
-.patient { background: var(--patient-grad); }
-.doctor { background: var(--doctor-grad); }
-
-.hint {
-    margin-top: 15px;
-    color: var(--text-muted);
-    font-size: 15px;
-}
-
-/* Trust Badges */
-.badges {
-    margin-top: 40px;
-    display: flex;
-    gap: 30px;
-    color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.badges span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.badges i { color: var(--primary); font-size: 18px; }
-
-/* Footer */
-.footer {
-    background-color: #1e2a3b;
-    padding: 30px 12.5%;
-    color: #cfd8e3;
-    margin-top: auto;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-left p { font-size: 14px; margin-bottom: 4px; }
-.footer-left .disclaimer { font-size: 12px; opacity: 0.7; }
-
-.footer-links { display: flex; gap: 15px; font-size: 14px; }
-.footer-links a { color: #9bb4d3; text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: #fff; }
-    </style>
+    <link rel="stylesheet" href="./css/patient.css">
 </head>
 <body>
 
-    <!-- Header -->
+
+<!-- Header -->
     <header class="header">
         <div class="brand">
             <i class='bx bx-shield-quarter'></i>
-            <span><a href= "index.html">Slow Glove</a></span>
+            <span><a href= "portal.html">Slow Glove</a></span>
         </div>
         <nav>
-            <a href="./index.html">Home</a>
+            <a href="./portal.html">Home</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
     </header>
 
-    <!-- Main -->
-    <main class="container">
-        <div class="card">
+<main class="dashboard">
 
-            <div class="logo-icon">
-                <i class='bx bx-donate-heart'></i>
+    <!-- LEFT COLUMN -->
+    <section class="left">
+
+        <!-- Start Test Card -->
+        <div class="card start-test">
+            <button class="start-btn"><a href="./test2.html">Start Today’s Test</a></button>
+            <div class="info">
+                <span id="lastTest">● Last test: --</span>
+                <span id="testDuration">
+                    <i class='bx bx-time'></i> Approx. --
+            </span>
+        </div>
+
+        </div>
+
+        <!-- Motor Tasks -->
+        <div class="card">
+    <div class="card-header">
+        <h3>Motor Tasks</h3>
+        <span class="badge" id="taskCount">4 tasks total</span>
+    </div>
+
+    <div class="tasks">
+
+        <div class="task" data-task="finger_tapping">
+            <div class="task-info">
+                <i class='bx bx-hand'></i>
+                <span>Finger Tapping</span>
+            </div>
+            <i class='bx bx-check-circle task-status'></i>
+        </div>
+
+        <div class="task" data-task="hand_open_close">
+            <div class="task-info">
+                <i class='bx bx-hand'></i>
+                <span>Hand Open / Close</span>
+            </div>
+            <i class='bx bx-check-circle task-status'></i>
+        </div>
+
+        <div class="task" data-task="hand_flip">
+            <div class="task-info">
+                <i class='bx bx-refresh'></i>
+                <span>Hand Flip</span>
+            </div>
+            <i class='bx bx-check-circle task-status'></i>
+        </div>
+
+        <!-- <div class="task" data-task="finger_to_nose">
+            <div class="task-info">
+                <i class='bx bx-target-lock'></i>
+                <span>Finger to Nose</span>
+            </div>
+            <i class='bx bx-check-circle task-status'></i>
+        </div> -->
+
+    </div>
+</div>
+
+
+        <!-- Progress Chart -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Your Progress</h3>
+                <span class="status">Stable</span>
             </div>
 
-            <h1>Slow Glove</h1>
-            <p class="subtitle">Remote Motor Assessment Made Simple</p>
-
-            <!-- Patient Button -->
-            <a href="patient.html" class="role-btn patient">
-                <div class="icon">
-                    <i class='bx bx-user'></i>
-                </div>
-                <div class="text">
-                    <h3>Continue as a Patient</h3>
-                    <span>Access your home assessment portal</span>
-                </div>
-                <i class='bx bx-right-arrow-alt arrow'></i>
-            </a>
-
-            <!-- Doctor Button -->
-            <a href="d2.html" class="role-btn doctor">
-                <div class="icon">
-                    <i class='bx bx-pulse'></i>
-                </div>
-                <div class="text">
-                    <h3>Continue as a Doctor</h3>
-                    <span>View patient data and analytics</span>
-                </div>
-                <i class='bx bx-right-arrow-alt arrow'></i>
-            </a>
-
-            <p class="hint">Choose your role to continue to your dashboard</p>
+            <canvas id="progressChart" height="120"></canvas>
         </div>
 
-        <!-- Trust Indicators -->
-        <div class="badges">
-            <span><i class='bx bx-shield'></i> HIPAA Compliant</span>
-            <span><i class='bx bx-lock'></i> End-to-End Encrypted</span>
-            <span><i class='bx bx-check-circle'></i> Clinically Validated</span>
-        </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
+    <!-- RIGHT COLUMN -->
+    <aside class="right">
+
+        <!-- Status -->
+        <div class="card">
+            <h3>Status</h3>
+
+            <div class="status-item">
+                <span class="dot" id="gloveDot"></span>
+                Slow Glove <small id="gloveStatus">Checking...</small>
+            </div>
+
+            <div class="status-item">
+                <i class='bx bx-wifi'></i>
+                Internet <small id="internetStatus">Checking...</small>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <!-- <div class="card">
+            <h3>Support</h3>
+
+            <button class="support-btn blue">
+                <i class='bx bx-volume-full'></i> Audio Instructions
+            </button>
+
+            <button class="support-btn purple">
+                <i class='bx bx-help-circle'></i> Help & Practice
+            </button>
+
+            <button class="support-btn gray">
+                <i class='bx bx-cog'></i> Display Settings
+            </button>
+        </div> -->
+
+        <!-- <div class="card">
+            <h3>Support</h3>
+
+            <div id="instructions" class="instructions hidden support-btn blue">
+                <h4>Instructions</h4>
+                <p id="instructionText">
+                    Wear the glove on your dominant hand and sit comfortably.
+                </p>
+
+                <button onclick="playInstruction()">
+                    <i class='bx bx-play'></i> Play Audio
+                </button>
+
+                <audio id="instructionAudio" src="audio/instructions.mp3"></audio>
+            </div>
+
+
+            <button class="support-btn purple">
+                <i class='bx bx-help-circle'></i> Help & Practice
+            </button>
+
+            <button class="support-btn gray">
+                <i class='bx bx-cog'></i> Display Settings
+            </button>
+        </div> -->
+
+    </aside>
+
+</main>
+
+  <!-- Footer -->
     <footer class="footer">
   <div class="footer-content">
     <!-- Left side -->
@@ -290,6 +187,9 @@ body {
     </div>
   </div>
 </footer>
+
+<script src="./js/progress-chart.js"></script>
+<script src="./js/patient.js"></script>
 
 </body>
 </html>
