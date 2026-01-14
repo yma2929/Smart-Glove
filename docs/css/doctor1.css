@@ -217,10 +217,11 @@ body {
 
 
 /* Container for side-by-side charts */
+/* Container for side-by-side charts */
 .charts-row {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-    gap: 24px; /* Professional 6-unit spacing */
+    grid-template-columns: 1fr; /* <--- Change this from '1fr 1fr' to '1fr' */
+    gap: 24px; 
     margin-bottom: 24px;
 }
 
