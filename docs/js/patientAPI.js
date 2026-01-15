@@ -1,11 +1,18 @@
+// --- Configuration ---
+// Set this ID to match the patient for this dashboard (e.g., PID-001 for John Smith)
+const CURRENT_PATIENT_ID = "PID-001"; 
+
 // --- API Integration ---
 async function fetchPatientData() {
     try {
         const response = await fetch('http://localhost:3500/api/v1/tests');
-        const data = await response.json();
+        const allData = await response.json();
 
-        if (data.length > 0) {
-            const latestTest = data[0]; // The latest test due to "ORDER BY test_date DESC"
+        // Filter the results to only show tests belonging to THIS patient
+        const patientTests = allData.filter(test => test.patient_id === CURRENT_PATIENT_ID);
+
+        if (patientTests.length > 0) {
+            const latestTest = patientTests[0]; // The latest test for this specific patient
             
             // Update "Last Test" date
             const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -22,6 +29,9 @@ async function fetchPatientData() {
             if (isToday) {
                 taskNames.forEach(name => setTaskStatus(name, 'done'));
             }
+        } else {
+            // Optional: Handle case where patient has no tests yet
+            document.getElementById("lastTest").textContent = `● No tests recorded yet`;
         }
     } catch (error) {
         console.error("Error fetching from API:", error);
@@ -54,9 +64,17 @@ function updateGloveStatus(isConnected) {
     }
 }
 
+// Initialize Task Status
+// Note: Ensure setTaskStatus is defined in your environment (it was in your previous snippet)
 const taskNames = ['finger_tapping', 'hand_open_close', 'hand_flip', 'finger_to_nose'];
-taskNames.forEach(name => setTaskStatus(name, 'pending'));
+if (typeof setTaskStatus === 'function') {
+    taskNames.forEach(name => setTaskStatus(name, 'pending'));
+}
 
 // Call API on load
 fetchPatientData(); 
+
+// Check for updates every 30 seconds to see if the Hardware sent new data
+setInterval(fetchPatientData, 30000);
+
 setTimeout(() => updateGloveStatus(true), 1500);
