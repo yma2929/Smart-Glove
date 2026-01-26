@@ -36,7 +36,28 @@
 
         <!-- Start Test Card -->
         <div class="card start-test">
-            <button class="start-btn"><a href="./test2.html">Start Today’s Test</a></button>
+   <button class="start-btn" id="startTestBtn">
+  Start Today’s Test
+</button>
+<!-- Medication Question Modal -->
+<div id="medicationModal" class="modal hidden">
+  <div class="modal-content">
+    <!-- <h3>Before starting the test</h3>
+
+    <label for="medicationDate">
+      When was the last time you had your medication?
+    </label>
+
+    <input type="date" id="medicationDate" /> -->
+
+    <div class="modal-actions">
+      <button id="cancelMedication" class="btn-secondary">Cancel</button>
+      <button id="confirmMedication" class="btn-primary">Continue</button>
+    </div>
+  </div>
+</div>
+
+
             <div class="info">
                 <span id="lastTest">● Last test: --</span>
                 <span id="testDuration">
@@ -189,7 +210,7 @@
 </footer>
 
 <script src="./js/progress-chart.js"></script>
-<script src="./js/patientAPI.js"></script>
+<script src="./js/patient.js"></script>
 
 </body>
 </html>
