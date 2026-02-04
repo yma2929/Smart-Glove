@@ -1,7 +1,7 @@
 :root {
     --primary: #005FB8; --teal: #14b8a6; --bg: #f8fafc;
     --success: #28A745; --danger: #DC2626; --warning: #D97706;
-    --text-dark: #1e293b; --text-muted: #475569; --border: #e2e8f0;
+    --text-dark: #1e293b; --text-muted: #3e454e; --border: #e2e8f0;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 
 /* Header Section */
 .page-header h1 { font-size: 36px; color: var(--text-dark); margin: 0; }
-.page-header p { font-size: 20px; color: var(--text-muted); margin-top: 4px; }
+.page-header p { font-size: 25px; color: var(--text-muted); margin-top: 4px; }
 
 /* Stats Grid */
 .stats-overview {

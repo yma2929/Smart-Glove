@@ -7,6 +7,55 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/doctor1.css">
+
+    <style>
+        /* Header */
+        .header {
+            background: #ffffff;
+            padding: 15px 12.5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            border-radius: 10px;;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        /* Navbar Logo Styling */
+        .nav-logo {
+            height: 62px; 
+            width: auto;
+            display: block;
+            border-radius: 10px; /* Optional: adds a slight round to square JPEGs */
+        }
+
+        .brand a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+
+        .header nav a:hover { color: var(--primary); }
+    </style>
+    
 </head>
 <body>
 
@@ -14,10 +63,12 @@
     
 
      <header class="page-header header ">
-        <div class="brand">
+        <div class="brand  logo-area">
+            <img src="/logo.jpeg" alt="Slow Glove Logo" class="nav-logo">
             <h1><a href="./d2.html">Clinical Dashboard</a></h1>
         
         </div>
+
         <nav>
             <a href="./portal.html">Home</a>
             <a href="#">About</a>

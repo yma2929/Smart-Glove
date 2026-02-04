@@ -12,6 +12,53 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="./css/patient.css">
+    <style>
+        
+        /* Header */
+        .header {
+            background: #fff;
+            padding: 15px 12.5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        /* Navbar Logo Styling */
+        .nav-logo {
+            height: 32px; 
+            width: auto;
+            display: block;
+            border-radius: 4px; /* Optional: adds a slight round to square JPEGs */
+        }
+
+        .brand a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .header nav a:hover { color: var(--primary); }
+    </style>
 </head>
 <body>
 
@@ -19,8 +66,10 @@
 <!-- Header -->
     <header class="header">
         <div class="brand">
-            <i class='bx bx-shield-quarter'></i>
-            <span><a href= "portal.html">Slow Glove</a></span>
+            <a href="portal.html">
+                <img src="/logo.jpeg" alt="Slow Glove Logo" class="nav-logo">
+                Slow Glove
+            </a>
         </div>
         <nav>
             <a href="./portal.html">Home</a>

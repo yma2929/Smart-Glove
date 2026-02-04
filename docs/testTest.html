@@ -1,58 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Patient Assessment |  Slow Glove</title>
+    <title>Patient Assessment | Slow Glove</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/test2.css">
     <style>
-        /* Header */
-        .header {
-            background: #ffffff;
-            padding: 15px 12.5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+        .header { background: #ffffff; padding: 15px 12.5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 10px rgba(0,0,0,0.05); }
+        .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+        .nav-logo { height: 62px; width: auto; display: block; border-radius: 10px; }
+        .brand a { text-decoration: none; color: var(--primary); font-size: 22px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Auto-start Highlight */
+        .status-item.in-progress { border: 2px solid #005FB8; background: #eef6ff; }
+        .video-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); color: #fff; display: flex;
+            align-items: center; justify-content: center; opacity: 0; transition: 0.3s;
         }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-        }
-
-        /* Navbar Logo Styling */
-        .nav-logo {
-            height: 62px; 
-            width: auto;
-            display: block;
-            border-radius: 10px; /* Optional: adds a slight round to square JPEGs */
-        }
-
-        .brand a {
-            text-decoration: none;
-            color: var(--primary);
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .header nav a {
-            margin-left: 30px;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .header nav a:hover { color: var(--primary); }
+        .media-container:hover .video-overlay { opacity: 1; }
     </style>
 </head>
 <body>
@@ -72,7 +40,7 @@
                 <span id="taskCounter">Task 1 of 3</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-fill" id="progressFill" style="width: 33%;"></div>
             </div>
         </section>
 
@@ -87,38 +55,35 @@
             <div class="info-grid">
                 <div class="info-box blue">
                     <strong><i class='bx bx-info-circle'></i> Instructions</strong>
-                    <p id="taskInstructions">Tap your index finger and thumb together as quickly as possible.</p>
+                    <p id="taskInstructions">Watch the video carefully. The test will start automatically when it finishes.</p>
                 </div>
 
                 <div class="info-box purple">
                     <strong><i class='bx bx-video'></i> Visual Guide</strong>
-                    <div class="media-container" style="margin-top:10px; border-radius:10px; background:#000; overflow:hidden;">
-                        <img id="taskGif" src="assets/gifs/finger-tapping.gif" alt="Tutorial" style="width:100%; display:block;">
+                    <div class="media-container" style="margin-top:10px; border-radius:10px; background:#000; overflow:hidden; position: relative;">
+                        <video id="taskVideo" width="100%" muted playsinline style="display:block;">
+                            <source id="videoSource" src="assets/videos/finger-tapping.mp4" type="video/mp4">
+                        </video>
+                        <div id="videoLabel" style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.7); color:white; padding:4px 10px; border-radius:5px; font-size:12px;">Tutorial Playing</div>
                     </div>
                 </div>
             </div>
 
-            <div class="info-box yellow audio-box" id="audioBtn">
-                <strong><i class='bx bx-volume-full'></i> Audio Instructions</strong>
-                <p id="audioStatus">Tap here to hear the instructions read aloud.</p>
-                <audio id="instructionAudio" src="assets/audio/finger-tapping.mp3"></audio>
-            </div>
-
             <div class="timer-container">
                 <div class="timer-circle">
-                    <span id="timer">30</span>
+                    <span id="timer">10</span>
                     <small>seconds</small>
                 </div>
                 <p id="recordingMsg" class="recording hidden">
                     <span class="pulse-dot"></span> Recording sensor data...<br>
                     Keep going! You're doing great.
                 </p>
+                <p id="waitMsg" style="color: #666; margin-top: 10px;">Watch the tutorial to begin...</p>
             </div>
 
-            <div class="action-buttons">
-                <button id="startBtn" class="btn primary"><i class='bx bx-play'></i> Begin Task</button>
-                <button id="pauseBtn" class="btn warning hidden"><i class='bx bx-pause'></i> Pause</button>
-                <button id="nextBtn" class="btn success hidden">Next Task <i class='bx bx-right-arrow-alt'></i></button>
+            <div class="action-buttons hidden">
+                <button id="startBtn" class="btn primary">Begin Task</button>
+                <button id="nextBtn" class="btn success">Next Task</button>
             </div>
         </main>
 
@@ -128,7 +93,7 @@
                 <h1>Assessment Complete</h1>
                 <p>Your motor function data has been analyzed.</p>
             </div>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" style="height: 300px;">
                 <canvas id="analysisChart"></canvas>
             </div>
             <button class="btn primary" onclick="location.reload()" style="margin-top: 20px;"><i class='bx bx-refresh'></i> Restart Session</button>
@@ -140,23 +105,10 @@
                 <div class="status-item unstarted" id="status-0"><i class='bx bx-hand'></i><span>Finger Tapping</span></div>
                 <div class="status-item unstarted" id="status-1"><i class='bx bx-stop-circle'></i><span>Hand Open/Close</span></div>
                 <div class="status-item unstarted" id="status-2"><i class='bx bx-refresh'></i><span>Hand Flip</span></div>
-                <!-- <div class="status-item unstarted" id="status-3"><i class='bx bx-user'></i><span>Finger to Nose</span></div> -->
             </div>
         </section>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <p>© 2026 Slow Glove. All rights reserved.</p>
-                <p>For clinical support and research purposes only.</p>
-            </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a><span>|</span><a href="#">Terms of Use</a><span>|</span><a href="#">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./js/test2.js"></script>
+    <script src="./js/test.js"></script>
 </body>
 </html>
